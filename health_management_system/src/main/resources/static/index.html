@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Management System</title>
+      <link rel="stylesheet" href="style_home.css">
+      
+</head>
+
+<!-- Header: Navigation -->
+<header>
+<div class="logo">
+        <h2><strong>Health Sync</strong></h2>
+        <h4>Your Health & Fitness Partner</h4>
+      </div>
+	<nav>
+		<div class="container">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="userLogin">User Login</a></li>
+				<li><a href="userSignUp">Sign Up</a></li>
+				<li><a href="#aboutUs">About Us</a></li>
+				<li><a href="#contactUs">Contact Us</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+<body>
+    <!-- Fix Text over Image + Image  -->
+    <section class="cover-photo">
+		<div class="overlay"></div>
+		 <h1 style="color: white;"> Welcome to the Health Management System</h1><br>
+		 <br>
+		 <br>
+	</section>
+    
+   
+    <section id="aboutUs">
+        <h2>About Us</h2>
+        <p>A health management system is a platform that enables users to monitor and manage their health and wellness. The system
+         typically includes features such as tracking vitals, scheduling appointments, ordering medications, and accessing educational
+         resources related to health and wellness.</p>
+         <br>
+         <p>Our health management system is designed to provide users with a convenient and effective way to manage their health. With
+         our system, users can easily track their vitals, such as blood pressure, heart rate, and blood sugar levels, and monitor 
+         their progress over time. The system also provides users with access to educational resources on health and wellness topics,
+         such as nutrition, exercise, and stress management.</p>
+         <br>
+         <p>At our company, we are committed to helping individuals live healthier and happier lives. Our team of healthcare 
+         professionals and technology experts is dedicated to developing innovative solutions that empower individuals to take control
+         of their health. We believe that by providing individuals with the tools and resources they need to manage their health, 
+         we can help to improve overall health outcomes and reduce healthcare costs.</p>
+    </section>
+    <section id="contactUs">
+        <h2 style="text-align:center">Contact Us</h2>
+        <form method="post" action="/ContactServlet">
+			  <label>Name:</label>
+			  <input type="text" name="name"><br>
+			  <label>Email:</label>
+			  <input type="email" name="email"><br>
+			  <label>Message:</label>
+			  <textarea name="message"></textarea><br>
+			  <input type="submit" value="Submit">
+		</form>
+    </section>
+    
+</body>
+<footer>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+    <a href="#">
+          <img src="Health Sync.svg" alt="Website Logo" style="width: 300px; height: 250px;">
+        </a>
+    </div>
+    
+    <p>&copy; 2023 Health Sync. All Rights Reserved.</p>
+  </footer>
+</html>

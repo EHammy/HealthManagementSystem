@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Vitals</title>
+		<link rel="stylesheet" href="style_dashboard.css">
+</head>
+<style>
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-size: 1.2rem;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+a.edit {
+  color: #4b7054;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+a.delete {
+  color: red;
+  font-weight: bold;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color:#b9855c;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: black;
+}
+
+/* Optional: add some spacing between the input and button */
+form > * {
+  margin-right: 10px;
+}
+
+
+</style>
+<header>
+    <div class="logo">
+        <h2><strong>Health Sync</strong></h2>
+        <h4>Your Health & Fitness Partner</h4>
+    </div>
+  <nav>
+    <ul>
+      <li><a th:href="@{/userDashboard}">Home</a></li>
+      <li><a th:href="@{/profile}">Profile</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Exercises</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputRoutine}">Add Routine</a>
+          <br>
+          <a th:href="@{/viewRoutines}">View Routines</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Vitals</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputVital}">Add Vitals</a>
+          <br>
+		  <a th:href="@{/viewVitals}">View Vitals</a>
+        </div>
+      </li>
+      <li><a th:href="@{/help}">Help</a></li>
+	  <li><a th:href="@{/userLogout}">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<body>
+<section>
+<div>
+<h3>Search by routine name (leave blank to view all)</h3>
+<form th:action="@{/viewRoutines}" method="get">
+    <input type="text" name="searchTerm" placeholder="Search by routine name..." th:value="${searchForm.searchTerm}">
+    <button type="submit">Search</button>
+</form>
+</div>
+</section>
+<!-- Table of all Vitals -->
+<table>
+<h2 style="text-align:center"> Your Routines:</h2>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Routine Name </th>
+			<th>Exercise 1</th>
+			<th>Exercise 2</th>
+			<th>Exercise 3</th>
+			<th>Exercise 4</th>
+			<th>Exercise 5</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="routine : ${routinesList}">
+			<td th:text="${routine.id}"></td>
+			<td th:text="${routine.routineName}"></td>
+			<td th:text="${routine.exercise1}"></td>
+			<td th:text="${routine.exercise2}"></td>
+			<td th:text="${routine.exercise3}"></td>
+			<td th:text="${routine.exercise4}"></td>
+			<td th:text="${routine.exercise5}"></td>
+						
+			<!-- These links aren't working and aren't connected to the linkedLists? Probably because of the id stuff -->
+				<td><a th:href="@{/editRoutine(id=${routine.id})}" class="edit">Edit</a></td>
+                <td>  <a th:href="@{/deleteRoutine(id=${routine.id})}" class="delete">Delete</a></td>
+            
+				
+		
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+</body>
+<footer>
+    <nav>
+      <ul>
+        <li><a href="userDashboard.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+	  	<li><a th:href="@{/userLogout}">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+    <a href="#">
+          <img src="Health Sync.svg" alt="Website Logo" style="width: 300px; height: 250px;">
+        </a>
+    </div>
+    
+    <p>&copy; 2023 Health Sync. All Rights Reserved.</p>
+  </footer>
+</html>

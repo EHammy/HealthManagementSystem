@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>User Dashboard</title>
+<link rel="stylesheet" href="style_dashboard.css">
+</head>
+<style>
+		h1 {
+			margin-top: 0;
+		}
+		p {
+			margin-bottom: 20px;
+		}
+		section {
+			margin-bottom: 40px;
+			padding: 20px;
+			background-color: #eee;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px #ccc;
+		}
+		section h2 {
+			font-size: 24px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+		section p {
+			font-size: 18px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+	</style>
+<header>
+    <div class="logo">
+        <h2><strong>Health Sync</strong></h2>
+        <h4>Your Health & Fitness Partner</h4>
+    </div>
+  <nav>
+    <ul>
+      <li><a th:href="@{/userDashboard}">Home</a></li>
+      <li><a th:href="@{/profile}">Profile</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Exercises</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputRoutine}">Add Routine</a>
+          <br>
+          <a th:href="@{/viewRoutines}">View Routines</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Vitals</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputVital}">Add Vitals</a>
+          <br>
+		  <a th:href="@{/viewVitals}">View Vitals</a>
+        </div>
+      </li>
+      <li><a th:href="@{/help}">Help</a></li>
+	  <li><a th:href="@{/userLogout}">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<body>
+<br>
+<br>
+	<h1 style="text-align:center">Help</h1>
+	<section>
+		<h2>Getting Started</h2>
+		<p>Here are some tips for getting started with our application:</p>
+		<ul>
+			<li>Make sure you have a reliable internet connection</li>
+			<li>Create an account if you haven't already</li>
+			<li>Explore the various features and sections of the application</li>
+			<li>Contact support if you have any questions or issues</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Frequently Asked Questions</h2>
+		<p>Here are some answers to our most commonly asked questions:</p>
+		<dl>
+			<dt>How do I change my password?</dt>
+			<dd>You can change your password by going to the settings page and selecting the "Change Password" option.</dd>
+			<dt>How do I add a new entry?</dt>
+			<dd>To add a new entry, go to the corresponding section of the application (e.g. "Add New Vitals" for adding new vitals) and fill out the form.</dd>
+			<dt>How do I view my past entries?</dt>
+			<dd>You can view your past entries by going to the corresponding section of the application and selecting the "View All" option.</dd>
+		</dl>
+	</section>
+	<section>
+		<h2>Contact Support</h2>
+		<p>If you have any questions or issues, please don't hesitate to contact our support team:</p>
+		<ul>
+			<li>Phone: 555-555-5555</li>
+			<li>Email: support@myapplication.com</li>
+			<li>Live Chat: available on our website</li>
+		</ul>
+	</section>
+</body>
+<footer>
+    <nav>
+      <ul>
+        <li><a href="userDashboard.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+	  	<li><a th:href="@{/userLogout}">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+    <a href="#">
+          <img src="Health Sync.svg" alt="Website Logo" style="width: 300px; height: 250px;">
+        </a>
+    </div>
+    
+    <p>&copy; 2023 Health Sync. All Rights Reserved.</p>
+  </footer>
+</html>

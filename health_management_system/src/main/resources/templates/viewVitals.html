@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View Vitals</title>
+		<link rel="stylesheet" href="style_dashboard.css">
+</head>
+<style>
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-size: 1.2rem;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #ccc;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+a.edit {
+  color: #4b7054;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+a.delete {
+  color: red;
+  font-weight: bold;
+}
+</style>
+<header>
+    <div class="logo">
+        <h2><strong>Health Sync</strong></h2>
+        <h4>Your Health & Fitness Partner</h4>
+    </div>
+  <nav>
+    <ul>
+      <li><a th:href="@{/userDashboard}">Home</a></li>
+      <li><a th:href="@{/profile}">Profile</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Exercises</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputRoutine}">Add Routine</a>
+          <br>
+          <a th:href="@{/viewRoutines}">View Routines</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Vitals</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputVital}">Add Vitals</a>
+          <br>
+		  <a th:href="@{/viewVitals}">View Vitals</a>
+        </div>
+      </li>
+      <li><a th:href="@{/help}">Help</a></li>
+	  <li><a th:href="@{/userLogout}">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<body>
+<!-- Table of all Vitals -->
+<table>
+<h2 style="text-align:center"> Your Vitals:</h2>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Weight</th>
+			<th>Heart Rate</th>
+			<th>Blood Pressure</th>
+			<th>Oxygen</th>
+			<th>Temperature</th>
+			<th>Date</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="vital : ${vitalsList}">
+			<td th:text="${vital.id}"></td>
+			<td th:text="${vital.weight}"></td>
+			<td th:text="${vital.heartRate}"></td>
+			<td th:text="${vital.bloodPressure}"></td>
+			<td th:text="${vital.oxygen}"></td>
+			<td th:text="${vital.temperature}"></td>
+			<td th:text="${#temporals.format(vital.inputDate, 'yyyy-MM-dd')}"></td>
+			
+			<!-- These links aren't working and aren't connected to the linkedLists? Probably because of the id stuff -->
+				<td><a th:href="@{/editVital(id=${vital.id})}" class="edit">Edit</a></td>
+                <td>  <a th:href="@{/deleteVital(id=${vital.id})}" class="delete">Delete</a></td>
+            
+				
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+</body>
+<footer>
+    <nav>
+      <ul>
+        <li><a href="userDashboard.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+	  	<li><a th:href="@{/userLogout}">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+    <a href="#">
+          <img src="Health Sync.svg" alt="Website Logo" style="width: 300px; height: 250px;">
+        </a>
+    </div>
+    
+    <p>&copy; 2023 Health Sync. All Rights Reserved.</p>
+  </footer>
+</html>

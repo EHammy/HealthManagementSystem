@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add new Vitals</title>
+	<link rel="stylesheet" href="style_dashboard.css">
+</head>
+<style>
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+form label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 0.5rem;
+}
+
+form input, form textarea {
+  flex: 1;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+form input[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #b9855c;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: black;
+}
+
+form textarea {
+  resize: none;
+  height: 150px;
+}
+
+form button {
+  align-self: flex-end;
+}
+
+</style>
+<header>
+    <div class="logo">
+        <h2><strong>Health Sync</strong></h2>
+        <h4>Your Health & Fitness Partner</h4>
+    </div>
+  <nav>
+    <ul>
+      <li><a th:href="@{/userDashboard}">Home</a></li>
+      <li><a th:href="@{/profile}">Profile</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Exercises</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputRoutine}">Add Routine</a>
+          <br>
+          <a th:href="@{/viewRoutines}">View Routines</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Vitals</a>
+        <div class="dropdown-content">
+          <a th:href="@{/inputVital}">Add Vitals</a>
+          <br>
+		  <a th:href="@{/viewVitals}">View Vitals</a>
+        </div>
+      </li>
+      <li><a th:href="@{/help}">Help</a></li>
+	  <li><a th:href="@{/userLogout}">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<body>
+<!-- Add New Vitals -->
+<br>
+<br>
+<form th:object="${newVital}" th:action="@{/inputVital}" method='POST'>
+ <h2>Input a new Vitals: </h2>
+<input type="hidden" th:field="*{id}" />
+Weight: <input name="weight" size="20" th:field="*{weight}"> <br />
+Heart Rate: <input name="heartRate" size="20" th:field="*{heartRate}"><br />
+Blood Pressure: <input name="bloodPressure" size="20" th:field="*{bloodPressure}"><br />
+Oxygen: <input name="oxygen" size="20" th:field="*{oxygen}"><br />
+Temperature: <input name="temperature" size="20" th:field="*{temperature}"><br />
+Date:  <input type="date" name="inputDate" size="10" th:field="*{inputDate}"> <br />
+<input name="submit" type="submit" value="submit" />
+</form>
+<br>
+<br>
+</body>
+
+<footer>
+    <nav>
+      <ul>
+        <li><a href="userDashboard.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="contact.html">Contact</a></li>
+	  	<li><a th:href="@{/userLogout}">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+    <a href="#">
+          <img src="Health Sync.svg" alt="Website Logo" style="width: 300px; height: 250px;">
+        </a>
+    </div>
+    
+    <p>&copy; 2023 Health Sync. All Rights Reserved.</p>
+  </footer>

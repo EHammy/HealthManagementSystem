@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style_login_signup.css">
+
+</head>
+<style>
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+form label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 0.5rem;
+}
+
+form input, form textarea {
+  flex: 1;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+form input[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #b9855c;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: black;
+}
+
+form textarea {
+  resize: none;
+  height: 150px;
+}
+
+form button {
+  align-self: flex-end;
+}
+
+</style>
+<!-- Header: Navigation -->
+<header>
+<div class="logo">
+        <h2><strong>Health Sync</strong></h2>
+        <h4>Your Health & Fitness Partner</h4>
+      </div>
+	<nav>
+		<div class="container">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="userLogin">User Login</a></li>
+				<li><a href="userSignUp">Sign Up</a></li>
+				<li><a href="#aboutUs">About Us</a></li>
+				<li><a href="#contactUs">Contact Us</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+<!-- Sign Up for a User account -->
+<body>
+    <h1 style="text-align:center">Sign Up for a User Account</h1>
+    <form th:object="${user}" th:action="@{/userSignUp}" method="post">
+        <input type="hidden" th:name="id" th:value="-1">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <div>
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required>
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+        </div>
+        <div>
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+<!-- Footer Section -->
+<footer>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+    <a href="#">
+          <img src="Health Sync.svg" alt="Website Logo" style="width: 300px; height: 250px;">
+        </a>
+    </div>
+    
+    <p>&copy; 2023 Health Sync. All Rights Reserved.</p>
+  </footer>
+</html>
